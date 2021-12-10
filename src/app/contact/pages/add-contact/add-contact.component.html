@@ -1,1 +1,19 @@
-<p>add-contact works!</p>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Your name..." formControlName="lastName">
+    <mat-error *ngIf="contactForm.controls.lastName.errors && contactForm.controls.lastName.touched">
+      Lastname is required...
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Your firstname..." formControlName="firstName">
+    <mat-error *ngIf="contactForm.controls.firstName.errors && contactForm.controls.firstName.touched">
+      Lastname is required...
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="contactForm.invalid">
+    Add
+  </button>
+</form>
