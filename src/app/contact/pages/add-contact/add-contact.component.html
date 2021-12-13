@@ -13,7 +13,41 @@
     </mat-error>
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Occupation</mat-label>
+    <mat-select formControlName="occupation">
+      <mat-option *ngFor="let occupation of occupations" [value]="occupation">
+        {{ occupation }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Company</mat-label>
+    <mat-select formControlName="company">
+      <mat-option *ngFor="let company of companies" [value]="company">
+        {{ company }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <app-address></app-address>
+
+  <mat-form-field>
+    <input matInput placeholder="Zip Code" [readonly]="true" formControlName="zipCode">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="City" [readonly]="true" formControlName="city">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Street name" [readonly]="true" formControlName="streetName">
+  </mat-form-field>
+
   <button mat-raised-button color="primary" [disabled]="contactForm.invalid">
     Add
   </button>
 </form>
+
+{{ contactForm.value | json }}

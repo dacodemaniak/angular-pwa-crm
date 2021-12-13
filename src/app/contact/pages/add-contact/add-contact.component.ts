@@ -10,6 +10,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddContactComponent implements OnInit {
   public contactForm!: FormGroup;
 
+  public occupations: string[] = [
+    'Teacher',
+    'Mathematician',
+    'Developer'
+  ];
+
+  public companies: string[] = [
+    'Airbus',
+    'Pierre Favre',
+    'Aelion'
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: HttpClient
@@ -24,8 +36,28 @@ export class AddContactComponent implements OnInit {
       firstName: [
         '',
         Validators.required
+      ],
+      occupation : [
+        '',
+        Validators.required
+      ],
+      company: [
+        ''
+      ],
+      zipCode: [
+        ''
+      ],
+      city: [
+        ''
+      ],
+      streetName: [
+        ''
       ]
     })
+
+    this.contactForm.controls.zipCode.disable();
+    this.contactForm.controls.city.disable();
+    this.contactForm.controls.streetName.disable();
   }
 
   public onSubmit(): void {
