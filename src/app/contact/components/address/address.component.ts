@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddressApiService } from '../../services/address-api.service';
 
 @Component({
   selector: 'app-address',
@@ -8,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class AddressComponent implements OnInit {
   public address: string = '';
 
-  constructor() { }
+  constructor(
+    private addressApiService: AddressApiService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+  public getAddress(): void {
+    this.addressApiService.getAddress(this.address)
+      .subscribe((results: any) => {
+        console.log(JSON.stringify(results));
+      });
   }
-
-  public getAddress(): void {}
 
 }
