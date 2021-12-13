@@ -1,0 +1,17 @@
+<mat-form-field>
+  <input
+    matInput
+    autocomplete="off"
+    placeholder="Type the address..."
+    [(ngModel)]="address"
+    name="address"
+  >
+</mat-form-field>
+<button
+  mat-raised-button
+  color="accent"
+  type="button"
+  [disabled]="address.length === 0"
+  (click)="getAddress()"
+>Got it !</button>
+{{ address }}
