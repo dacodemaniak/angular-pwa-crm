@@ -5,6 +5,7 @@
     placeholder="Type the address..."
     [(ngModel)]="address"
     name="address"
+    (input)="addressChange($event)"
   >
 </mat-form-field>
 <button
