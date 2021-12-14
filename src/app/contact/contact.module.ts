@@ -7,6 +7,7 @@ import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { AddressComponent } from './components/address/address.component';
 import { FormsModule } from '@angular/forms';
 import { AddressApiService } from './services/address-api.service';
+import { ContactService } from './services/contact.service';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AddressApiService } from './services/address-api.service';
   ],
   exports: [],
   providers: [
-    AddressApiService
+    AddressApiService,
+    ContactService
   ]
 })
 export class ContactModule { }

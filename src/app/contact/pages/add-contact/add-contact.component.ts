@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddressInterface } from '../../interfaces/address-interface';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-add-contact',
@@ -25,7 +26,7 @@ export class AddContactComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient
+    private contactService: ContactService
   ) {}
 
   ngOnInit(): void {
@@ -63,12 +64,8 @@ export class AddContactComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.contactForm.valid) {
-      this.httpClient.post<any>(
-        'http://localhost:5000/person',
-        this.contactForm.value,
-        {
-          observe: 'response'
-        }
+      this.contactService.add(
+        this.contactForm.getRawValue()
       ).subscribe((response: HttpResponse<any>) => {
         console.log(JSON.stringify(response));
       })
