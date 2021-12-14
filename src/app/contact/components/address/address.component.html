@@ -14,4 +14,16 @@
   [disabled]="address.length === 0"
   (click)="getAddress()"
 >Got it !</button>
-{{ address }}
+
+<ng-container *ngIf="addresses.length">
+  <mat-selection-list [multiple]="false">
+    <mat-list-option
+      *ngFor="let address of addresses"
+      [value]="address"
+      (click)="onClick(address)"
+    >
+      {{ address.name }} {{ address.postcode }} {{ address.city }}
+    </mat-list-option>
+    <mat-list-option (click)="clearList()">Clear</mat-list-option>
+  </mat-selection-list>
+</ng-container>

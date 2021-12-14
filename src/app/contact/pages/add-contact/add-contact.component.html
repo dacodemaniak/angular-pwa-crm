@@ -31,7 +31,9 @@
     </mat-select>
   </mat-form-field>
 
-  <app-address></app-address>
+  <app-address
+    (emitAddress)="receiveAddress($event)"
+  ></app-address>
 
   <mat-form-field>
     <input matInput placeholder="Zip Code" [readonly]="true" formControlName="zipCode">

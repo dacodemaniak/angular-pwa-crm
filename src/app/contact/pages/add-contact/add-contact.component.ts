@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AddressInterface } from '../../interfaces/address-interface';
 
 @Component({
   selector: 'app-add-contact',
@@ -74,4 +75,10 @@ export class AddContactComponent implements OnInit {
     }
   }
 
+  public receiveAddress(address: AddressInterface): void {
+    this.contactForm.controls.city.setValue(address.city);
+    this.contactForm.controls.zipCode.setValue(address.postcode);
+    this.contactForm.controls.streetName.setValue(address.name);
+
+  }
 }

@@ -12,9 +12,10 @@ export class AddressApiService {
     private httpClient: HttpClient
   ) { }
 
-  public getAddress(input: string): Observable<any> {
+  public getAddress(input: string, ...args: any[]): Observable<any> {
+    const uri = `${environment.addressAPI}=${input}${args.length ? '&limit=' + args[0] : ''}`
     return this.httpClient.get<any>(
-      `${environment.addressAPI}=${input}`
+      uri
     ).pipe(
       take(1),
       map((results: any) => {
