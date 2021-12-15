@@ -6,7 +6,7 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary" [disabled]="companyForm.invalid">
     Add
   </button>
 </form>
