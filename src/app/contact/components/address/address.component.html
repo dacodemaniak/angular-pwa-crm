@@ -1,0 +1,30 @@
+<mat-form-field>
+  <input
+    matInput
+    autocomplete="off"
+    placeholder="Type the address..."
+    [(ngModel)]="address"
+    name="address"
+    (input)="addressChange($event)"
+  >
+</mat-form-field>
+<button
+  mat-raised-button
+  color="accent"
+  type="button"
+  [disabled]="address.length === 0"
+  (click)="getAddress()"
+>Got it !</button>
+
+<ng-container *ngIf="addresses.length">
+  <mat-selection-list [multiple]="false">
+    <mat-list-option
+      *ngFor="let address of addresses"
+      [value]="address"
+      (click)="onClick(address)"
+    >
+      {{ address.name }} {{ address.postcode }} {{ address.city }}
+    </mat-list-option>
+    <mat-list-option (click)="clearList()">Clear</mat-list-option>
+  </mat-selection-list>
+</ng-container>

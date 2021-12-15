@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  addressAPI: 'https://api-adresse.data.gouv.fr/search/?q',
+  backendAPI: 'http://127.0.0.1:5000/'
 };
 
 /*

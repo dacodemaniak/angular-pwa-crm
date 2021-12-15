@@ -1,0 +1,12 @@
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Company name...">
+    <mat-error *ngIf="c.name.touched && c.name.errors">
+      Company name is required
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="companyForm.invalid">
+    Add
+  </button>
+</form>
